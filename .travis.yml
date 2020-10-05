@@ -3,8 +3,10 @@ sudo: false
 
 language: go
 go:
-  - 1.14.x
-  - master
+  - 1.15.x
+
+env:
+  - GOFLAGS=-mod=vendor
 
 branches:
   only:
@@ -17,18 +19,18 @@ script:
   - make test
   - make vet
   - make website-test
-
-env:
-  - GOFLAGS=-mod=vendor
+  - curl -sfL https://git.io/goreleaser | sh -s -- check
 
 matrix:
   fast_finish: true
   allow_failures:
     - go: master
 
+# calls goreleaser
 deploy:
-  provider: releases
-  file: TODO
-  edge: true
-  on:
-    tags: true
+  - provider: script
+    skip_cleanup: true
+    script: curl -sL https://git.io/goreleaser | bash
+    on:
+      tags: true
+      condition: $TRAVIS_OS_NAME = linux
