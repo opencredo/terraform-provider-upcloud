@@ -13,6 +13,7 @@ branches:
     - master
 
 install:
+  - bash scripts/import_key.sh $TRAVIS_REPO_SLUG
   - bash scripts/gogetcookie.sh
 
 script:
