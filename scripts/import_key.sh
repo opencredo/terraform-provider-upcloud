@@ -17,6 +17,8 @@ if [[ -z "$PASSPHRASE" ]]; then
   error "PASSPHASE must be set as environment"
 fi
 
+PASSPHRASE=$(echo -n $PASSPHRASE | base64 -d)
+
 REPO_OWNER=$(echo $REPO_SLUG | sed 's/\([^\/]*\)\/.*/\1/g')
 
 if [[ ! -e $KEYHOME/$REPO_OWNER.key.gpg ]]; then
