@@ -11,6 +11,7 @@ env:
 branches:
   only:
     - master
+    - /^v\d+\.\d+\.\d+$/
 
 install:
   - bash scripts/import_key.sh $TRAVIS_REPO_SLUG
