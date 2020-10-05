@@ -25,3 +25,10 @@ matrix:
   fast_finish: true
   allow_failures:
     - go: master
+
+deploy:
+  provider: releases
+  file: TODO
+  edge: true
+  on:
+    tags: true
