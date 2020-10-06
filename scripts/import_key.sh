@@ -8,6 +8,8 @@ function error {
   exit 1
 }
 
+gpg --version
+
 KEYHOME=$(git rev-parse --show-toplevel)/.keys
 KEYRING_HOME=$KEYHOME/.gpg
 REPO_SLUG=$1
