@@ -43,5 +43,6 @@ Temporary Items
 
 dist/
 terraform/
-.keys/.gpg
-.keys/*.key
+.keys/
+*.pwd
+
